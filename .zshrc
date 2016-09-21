@@ -61,9 +61,9 @@ unalias gd
 function gd() {
     if [ -n "$1" ]
     then
-        git -c color.ui=always --no-pager diff "$1" | sed -E 's/(--- a\/|\+\+\+ b\/(.+))//g'
+        git diff --color "$1" | diff-so-fancy | less --tabs=4 -RFX
     else
-        git -c color.ui=always --no-pager diff | sed -E 's/(--- a\/|\+\+\+ b\/(.+))//g'
+        git diff --color | diff-so-fancy | less --tabs=4 -RFX
     fi
 }
 
