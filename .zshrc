@@ -22,14 +22,6 @@ alias de="cd ~/Desktop"
 alias js="bundle exec jekyll serve --watch"
 alias jb="bundle exec jekyll build"
 
-alias pat="cd ~/patreon"
-alias patw="cd ~/patreon/webdev"
-alias patp="cd ~/patreon/webdev/code/patreon_py"
-alias patpy="cd ~/patreon/webdev/code/patreon_py"
-alias patr="cd ~/patreon/webdev/code/patreon_react_features"
-alias patc="cd ~/patreon/webdev/code/patreon_webclient"
-alias simba="ssh patreon@simba.patreon.com"
-
 alias cannoneyed="cd ~/cannoneyed"
 
 #Python
