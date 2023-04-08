@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/andrewcoenen/.oh-my-zsh
+export ZSH=/Users/andycoenen/.oh-my-zsh
 
 ZSH_THEME="muse"
 plugins=(git npm docker)
@@ -9,7 +9,12 @@ source $ZSH/oh-my-zsh.sh
 # The original version is saved in .bash_profile.pysave
 # PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-PATH="/Users/andrewcoenen/development/flutter/bin:${PATH}"
+PATH="/Users/andycoenen/development/flutter/bin:${PATH}"
+PATH="/usr/local/go/bin:${PATH}"
+PATH="$PATH":"$HOME/development/flutter/.pub-cache/bin"
+PATH="$PATH":"$HOME/.pub-cache/bin"
+PATH="$PATH":"~/.bun/bin"
+PATH="$PATH":"$HOME/google-cloud-sdk/bin"
 # PATH=~/anaconda3/bin:$PATH
 export PATH
 
@@ -21,9 +26,6 @@ alias reprof=". ~/.zshrc"
 alias chrome="open -a Google\ Chrome"
 alias chr="open -a Google\ Chrome"
 alias de="cd ~/Desktop"
-alias js="bundle exec jekyll serve --watch"
-alias jb="bundle exec jekyll build"
-
 alias cannoneyed="cd ~/cannoneyed"
 
 #Python
@@ -51,6 +53,10 @@ alias glu="git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short"
 alias git=hub
 alias gbo="git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname) %(committerdate) %(authorname)' | sed 's/refs\/heads\///g'"
 alias gacm="git add .; git commit -m"
+
+function sniff() {
+    lsof -i -P | grep LISTEN | grep :$1
+}
 
 unalias gd
 function gd() {
@@ -83,19 +89,32 @@ function myip() {
 
 # # >>> conda initialize >>>
 # # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/Users/andrewcoenen/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# __conda_setup="$('/Users/andycoenen/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 # if [ $? -eq 0 ]; then
 #     eval "$__conda_setup"
 # else
-#     if [ -f "/Users/andrewcoenen/anaconda3/etc/profile.d/conda.sh" ]; then
-#         . "/Users/andrewcoenen/anaconda3/etc/profile.d/conda.sh"
+#     if [ -f "/Users/andycoenen/anaconda3/etc/profile.d/conda.sh" ]; then
+#         . "/Users/andycoenen/anaconda3/etc/profile.d/conda.sh"
 #     else
-#         export PATH="/Users/andrewcoenen/anaconda3/bin:$PATH"
+#         export PATH="/Users/andycoenen/anaconda3/bin:$PATH"
 #     fi
 # fi
 # unset __conda_setup
 # # <<< conda initialize <<<
 
+source ~/.git-completion.bash
+
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# bun completions
+[ -s "/Users/andycoenen/.bun/_bun" ] && source "/Users/andycoenen/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
